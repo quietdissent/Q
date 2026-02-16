@@ -37,7 +37,7 @@ export default function RootLayout({
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/smooth-scroll";  // ADD THIS IMPORT
+import SmoothScroll from "@/components/smooth-scroll";  // Add this import
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -54,9 +54,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SmoothScroll>  {/* ADD THIS WRAPPER */}
+        <SmoothScroll>  {/* Add this wrapper */}
           {children}
-        </SmoothScroll>  {/* ADD THIS WRAPPER */}
+        </SmoothScroll>  {/* Add this wrapper */}
       </body>
     </html>
   );
