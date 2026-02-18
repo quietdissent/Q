@@ -34,30 +34,3 @@ export default function RootLayout({
     </html>
   )
 }
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import SmoothScroll from "@/components/smooth-scroll";  // Add this import
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Your Site",
-  description: "Your description",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <SmoothScroll>  {/* Add this wrapper */}
-          {children}
-        </SmoothScroll>  {/* Add this wrapper */}
-      </body>
-    </html>
-  );
-}
