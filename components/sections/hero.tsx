@@ -326,8 +326,6 @@ export function HeroSection() {
           transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto mt-6 max-w-2xl font-serif text-xl italic leading-relaxed text-background/70 sm:text-2xl"
         >
-        >
-        >
           {"Business cognitive dissonance doesn't resolve itself."}
         </motion.p>
 
