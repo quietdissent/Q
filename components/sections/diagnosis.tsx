@@ -103,7 +103,7 @@ export function DiagnosisSection() {
 
             <div className="mt-10 rounded-xl border border-border bg-background p-6">
               <h4 className="text-sm font-medium uppercase tracking-wider text-muted-foreground">Investment</h4>
-              <p className="mt-2 font-serif text-3xl text-foreground">{"Starting at $5,000"}</p>
+              <p className="mt-2 font-serif text-3xl text-foreground">{""}</p>
               <p className="mt-2 text-sm text-muted-foreground">
                 {"Full operational diagnosis with written deliverables. Scope defined after initial conversation."}
               </p>
