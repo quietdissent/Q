@@ -308,7 +308,7 @@ export function HeroSection() {
         <h1 className="font-serif text-4xl leading-tight tracking-tight text-background sm:text-5xl md:text-6xl lg:text-7xl">
           <AnimatedHeadline text="Non-consensus decisions" />
           <br className="hidden sm:block" />
-          <AnimatedHeadline text="for high impact bets" startDelay={3} />
+          <AnimatedHeadline text="for high impact outcomes" startDelay={3} />
         </h1>
 
         {/* Animated center divider */}
