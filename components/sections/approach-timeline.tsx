@@ -5,106 +5,89 @@ import { motion } from "framer-motion"
 const steps = [
   {
     number: "01",
-    phase: "Contact",
-    title: "Initial Conversation",
+    phase: "Intake",
+    title: "Initial Perception",
     description:
-      "A single conversation to determine whether the conditions are right for engagement. We do not pitch. We listen for what is not being said.",
+      "We begin by listening for what is not being said — the structural conditions that produce the presenting symptoms. This is not an intake interview. It is a diagnostic act.",
   },
   {
     number: "02",
-    phase: "Entry",
-    title: "Structural Immersion",
+    phase: "Analysis",
+    title: "Structural Mapping",
     description:
-      "We spend time inside the organisation — attending meetings, reading documents, speaking with people at every level. Not as auditors, but as careful observers.",
+      "We map the architecture of the problem across its actual layers: operational, relational, linguistic, and temporal. We locate where agency has been extracted and why.",
   },
   {
     number: "03",
     phase: "Language",
-    title: "Naming What Is Present",
+    title: "Authoring the Diagnosis",
     description:
-      "We author a precise account of what we found. Not a report full of recommendations — a document that names the actual conditions with accuracy.",
+      "We produce a written diagnosis — not a report, not a deck. A document that names the condition with sufficient precision that action becomes possible.",
   },
   {
     number: "04",
-    phase: "Design",
-    title: "Structural Intervention",
+    phase: "Deployment",
+    title: "Operational Integration",
     description:
-      "Where appropriate, we design the structural changes that would address what we named — new meeting architectures, decision frameworks, role definitions, communication protocols.",
+      "We work alongside the team to integrate the diagnosis into live operational conditions — holding the language as conditions evolve.",
   },
   {
     number: "05",
     phase: "Continuity",
-    title: "Authored Handover",
+    title: "Sustained Authorship",
     description:
-      "Every engagement ends with artefacts that carry the work forward — readable by future leaders who were not present, robust to the passage of time.",
+      "We remain available as conditions change, ensuring the diagnostic language remains accurate and the interventions remain coherent.",
   },
 ]
 
 export function ApproachTimeline() {
   return (
-    <section id="approach" className="bg-[#F5F0E8] px-6 py-32 lg:px-8 lg:py-40">
-      <div className="mx-auto max-w-6xl">
-        <div className="border-t border-[#1A1814]/15 pt-12 mb-20 flex items-baseline justify-between">
-          <span className="text-[10px] tracking-[0.25em] uppercase text-[#1A1814]/45">
-            Our Approach
-          </span>
-          <span className="text-[10px] tracking-[0.25em] uppercase text-[#1A1814]/25 hidden md:block">
-            Five phases
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 gap-0 lg*
-
-# --- 4. footer.tsx ---
-Push-GHFile "components/footer.tsx" @'
-"use client"
-
-import { motion } from "framer-motion"
-import { ArrowUp } from "lucide-react"
-
-export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
-
-  return (
-    <footer className="border-t border-[#1A1814]/15 bg-[#EDE8DC]">
-      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-20 lg:flex-row lg:items-start lg:justify-between lg:px-8">
-        <div className="flex flex-col gap-3">
-          <span className="font-serif text-xl text-[#1A1814]">Quiet Dissent</span>
-          <p className="text-sm text-[#1A1814]/50 max-w-xs leading-relaxed">
-            Operational continuity through authored insight.
-          </p>
-        </div>
-
-        <nav className="flex flex-wrap gap-x-10 gap-y-4">
-          {["Approach", "Work", "Diagnosis", "FAQ", "Contact"].map((link) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              className="text-[10px] tracking-[0.2em] uppercase text-[#1A1814]/50 transition-colors hover:text-[#1A1814]"
+    <section id="approach" className="bg-[#EDE8DC] border-t border-[#1A1814]/10">
+      <div className="mx-auto max-w-6xl px-6 py-32 lg:px-8 lg:py-40">
+        {/* Header */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 mb-20">
+          <div className="lg:col-span-3">
+            <span className="text-[10px] tracking-[0.25em] uppercase text-[#1A1814]/40">Our Approach</span>
+          </div>
+          <div className="lg:col-span-9">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif text-4xl text-[#1A1814] leading-[1.1] lg:text-5xl"
             >
-              {link}
-            </a>
-          ))}
-        </nav>
+              A practice built on perception before prescription.
+            </motion.h2>
+          </div>
+        </div>
 
-        <motion.button
-          onClick={scrollToTop}
-          whileHover={{ y: -2 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[#1A1814]/50 transition-colors hover:text-[#1A1814]"
-          aria-label="Scroll to top"
-        >
-          <ArrowUp className="h-3 w-3" />
-          Top
-        </motion.button>
+        {/* Timeline */}
+        <div className="flex flex-col">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-1 gap-6 border-t border-[#1A1814]/10 py-10 lg:grid-cols-12"
+            >
+              <div className="lg:col-span-3 flex flex-col gap-1">
+                <span className="text-[10px] tracking-[0.25em] uppercase text-[#8B7355]">{step.number}</span>
+                <span className="text-[10px] tracking-[0.2em] uppercase text-[#1A1814]/35">{step.phase}</span>
+              </div>
+              <div className="lg:col-span-4">
+                <h3 className="font-serif text-2xl text-[#1A1814]">{step.title}</h3>
+              </div>
+              <div className="lg:col-span-5">
+                <p className="text-sm text-[#1A1814]/60 leading-relaxed">{step.description}</p>
+              </div>
+            </motion.div>
+          ))}
+          <div className="border-t border-[#1A1814]/10" />
+        </div>
       </div>
-      <div className="border-t border-[#1A1814]/10 px-6 py-5 text-center">
-        <span className="text-[10px] tracking-[0.15em] uppercase text-[#1A1814]/35">
-          Quiet Dissent. All rights reserved.
-        </span>
-      </div>
-    </footer>
+    </section>
   )
 }
