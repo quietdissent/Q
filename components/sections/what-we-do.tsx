@@ -7,58 +7,62 @@ const services = [
     number: "01",
     title: "Structural Diagnosis",
     description:
-      "We enter an organisation and perceive what it cannot see about itself. Misaligned incentives, eroded trust, extracted agency — named precisely, without euphemism.",
+      "We identify the invisible architecture of dysfunction — the patterns of extraction, misalignment, and lost agency that standard assessments cannot reach.",
   },
   {
     number: "02",
-    title: "Language Architecture",
+    title: "Language Authoring",
     description:
-      "We author the internal vocabulary that allows an organisation to discuss its actual conditions. Without precise language, no real change is possible.",
+      "We give precise, usable language to conditions that have resisted naming. This language becomes the instrument of change — not the change itself.",
   },
   {
     number: "03",
-    title: "Continuity Design",
+    title: "Operational Continuity",
     description:
-      "We design operational structures that persist through leadership transitions, team changes, and strategic pivots — continuity authored into the fabric of how work happens.",
+      "We design the conditions under which people can work well across time — not just perform well under observation.",
   },
   {
     number: "04",
-    title: "Authored Insight",
+    title: "Insight Deployment",
     description:
-      "We produce documents, frameworks, and artefacts that carry institutional knowledge forward — readable by future people who were not present at the origin.",
+      "We work alongside leadership to deploy authored insight into live operational conditions, where it can actually hold.",
   },
 ]
 
 export function WhatWeDoSection() {
   return (
-    <section id="services" className="bg-[#F9F6F0] px-6 py-32 lg:px-8 lg:py-40">
-      <div className="mx-auto max-w-6xl">
-        <div className="border-t border-[#1A1814]/15 pt-12 mb-20 flex items-baseline justify-between">
-          <span className="text-[10px] tracking-[0.25em] uppercase text-[#1A1814]/45">
-            What We Do
-          </span>
-          <span className="text-[10px] tracking-[0.25em] uppercase text-[#1A1814]/25 hidden md:block">
-            Four disciplines
-          </span>
+    <section id="work" className="bg-[#F9F6F0] border-t border-[#1A1814]/10">
+      <div className="mx-auto max-w-6xl px-6 py-32 lg:px-8 lg:py-40">
+        {/* Header */}
+        <div className="flex items-end justify-between border-b border-[#1A1814]/10 pb-10 mb-16">
+          <span className="text-[10px] tracking-[0.25em] uppercase text-[#1A1814]/40">What We Do</span>
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="font-serif text-3xl text-[#1A1814] lg:text-4xl max-w-sm text-right"
+          >
+            Four disciplines. One coherent practice.
+          </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
+        {/* Services grid */}
+        <div className="grid grid-cols-1 gap-0 lg:grid-cols-2">
           {services.map((service, i) => (
             <motion.div
               key={service.number}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="border-t border-[#1A1814]/12 p-10 hover:bg-[#EDE8DC]/40 transition-colors duration-300"
+              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col gap-5 border-b border-[#1A1814]/10 py-10 lg:odd:border-r lg:odd:pr-16 lg:even:pl-16"
             >
-              <div className="flex flex-col gap-5">
-                <span className="text-[10px] tracking-[0.2em] uppercase text-[#8B7355]">
-                  {service.number}
-                </span>
-                <h3 className="font-serif text-2xl text-[#1A1814]">{service.title}</h3>
-                <p className="text-sm text-[#1A1814]/60 leading-relaxed">{service.description}</p>
-              </div>
+              <span className="text-[10px] tracking-[0.25em] uppercase text-[#8B7355]">
+                {service.number}
+              </span>
+              <h3 className="font-serif text-2xl text-[#1A1814]">{service.title}</h3>
+              <p className="text-sm text-[#1A1814]/60 leading-relaxed">{service.description}</p>
             </motion.div>
           ))}
         </div>
