@@ -2,146 +2,94 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { useInView } from "@/hooks/use-scroll-animation"
 import { Plus, Minus } from "lucide-react"
-
-const categories = ["All", "Operations", "AI & Technology", "Investment"]
 
 const faqs = [
   {
-    question: "What is 'business cognitive dissonance'?",
-    answer: "It's the gap between what an organization says its processes are and what actually happens day-to-day. It's the unspoken knowledge that things only work because specific people are always available, always remembering, always compensating.",
-    category: "Operations",
+    question: "What kinds of organisations do you work with?",
+    answer:
+      "We work with organisations where the presenting problem has resisted conventional diagnosis. This includes professional services firms, technology companies, healthcare bodies, cultural institutions, and founder-led businesses at inflection points. The common factor is not sector — it is the presence of a condition that standard frameworks have failed to locate.",
   },
   {
-    question: "How is this different from traditional consulting?",
-    answer: "Traditional consulting often delivers thick binders and ambitious transformation plans. We diagnose invisible structural issues, give them language, and install minimal systems that work without ongoing consultant dependency. The goal is your independence, not our retention.",
-    category: "Operations",
+    question: "How is this different from management consulting?",
+    answer:
+      "Management consulting typically begins with a framework and fits the organisation to it. We begin with the organisation and develop language specific to its actual condition. We do not bring solutions. We develop the diagnostic clarity from which the organisation's own solutions become possible.",
   },
   {
-    question: "Do I need to understand AI to work with you?",
-    answer: "No. We don't install AI for its own sake. We identify where deterministic and probabilistic AI can reclaim operational capacity. You don't need to understand the technology. You need to understand what it gives you back: time, clarity, and structural independence.",
-    category: "AI & Technology",
+    question: "What does an engagement actually produce?",
+    answer:
+      "The primary output is a written diagnosis — a document of sufficient precision that it can be used as an operational instrument. Depending on the engagement, this may be accompanied by a structural redesign, a decision protocol, a facilitated deployment process, or an ongoing advisory relationship.",
   },
   {
-    question: "What kind of AI do you implement?",
-    answer: "Two kinds: deterministic AI (rule-based automations, scheduling, workflows) and probabilistic AI (content generation, classification, conversational tools). We match the tool to the operational problem, not the other way around.",
-    category: "AI & Technology",
-  },
-  {
-    question: "How long does a typical engagement last?",
-    answer: "The operational diagnosis takes 2 weeks. Full installation typically takes 4-6 weeks. Some organizations see meaningful change within days of the diagnostic phase as invisible patterns become visible.",
-    category: "Investment",
+    question: "How long does an engagement take?",
+    answer:
+      "A diagnostic engagement typically runs four to eight weeks. Operational integration work runs longer — usually three to six months. We do not offer day-rate consulting or retainer arrangements that are not tied to specific diagnostic work.",
   },
   {
     question: "What does it cost?",
-    answer: "Diagnostic engagements start at $5,000. Full operational installations are scoped after diagnosis and typically range from $15,000-40,000 depending on organizational complexity. We'll never recommend more than what's structurally necessary.",
-    category: "Investment",
+    answer:
+      "Engagements are priced by scope, not by time. A diagnostic engagement begins at a fixed project fee discussed at intake. We do not publish rates because the scope of diagnosis cannot be determined before the initial conversation.",
   },
   {
-    question: "What if we already have a project manager handling operations?",
-    answer: "Project managers manage projects. We diagnose and install operational structure. If your PM is spending time on coordination that should be systematic, that's exactly the kind of structural dependency we resolve. Good PMs become even more effective when the underlying structure supports them.",
-    category: "Operations",
-  },
-  {
-    question: "Can you work with remote teams?",
-    answer: "Yes. In fact, remote and distributed teams often have more invisible structural dependencies because the informal hallway coordination that offices provide doesn't exist. The need for authored operational structure is even greater.",
-    category: "Operations",
+    question: "How do we begin?",
+    answer:
+      "You request a diagnosis. We conduct a brief intake conversation — typically 45 minutes — to determine whether the condition you are facing is one we can usefully address. If it is, we propose a scope. If it is not, we will say so directly.",
   },
 ]
 
 export function FAQSection() {
-  const [ref, inView] = useInView(0.05)
-  const [activeCategory, setActiveCategory] = useState("All")
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-  const filteredFaqs = activeCategory === "All" ? faqs : faqs.filter((f) => f.category === activeCategory)
-
   return (
-    <section id="faq" className="relative bg-card py-24 lg:py-32" ref={ref}>
-      <div className="mx-auto max-w-3xl px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center"
-        >
-          <h2 className="font-serif text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
-            {"If You're Recognizing These Patterns"}
-          </h2>
-          <p className="mt-4 text-base text-muted-foreground">
-            Common questions from leaders who feel it but haven't named it yet.
-          </p>
-        </motion.div>
-
-        {/* Category Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="mt-10 flex flex-wrap justify-center gap-2"
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => { setActiveCategory(cat); setOpenIndex(null) }}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
-                activeCategory === cat
-                  ? "bg-accent text-accent-foreground shadow-sm"
-                  : "bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground"
-              }`}
+    <section id="faq" className="bg-[#F9F6F0] border-t border-[#1A1814]/10">
+      <div className="mx-auto max-w-6xl px-6 py-32 lg:px-8 lg:py-40">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
+          <div className="lg:col-span-3">
+            <span className="text-[10px] tracking-[0.25em] uppercase text-[#1A1814]/40">Questions</span>
+          </div>
+          <div className="lg:col-span-9">
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="font-serif text-4xl text-[#1A1814] mb-14 lg:text-5xl"
             >
-              {cat}
-            </button>
-          ))}
-        </motion.div>
+              What people ask before they begin.
+            </motion.h2>
 
-        {/* FAQ Items */}
-        <div className="mt-10 flex flex-col gap-3">
-          <AnimatePresence mode="popLayout">
-            {filteredFaqs.map((faq, i) => {
-              const isOpen = openIndex === i
-              return (
-                <motion.div
-                  key={faq.question}
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className="overflow-hidden rounded-xl border border-border bg-background transition-all duration-300 hover:border-primary/20"
-                >
+            <div className="flex flex-col">
+              {faqs.map((faq, i) => (
+                <div key={i} className="border-t border-[#1A1814]/10">
                   <button
-                    onClick={() => setOpenIndex(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between px-6 py-5 text-left"
-                    aria-expanded={isOpen}
+                    onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                    className="flex w-full items-start justify-between gap-8 py-8 text-left"
                   >
-                    <span className="pr-4 text-base font-medium text-foreground">{faq.question}</span>
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-muted transition-colors duration-300">
-                      {isOpen ? <Minus className="h-3.5 w-3.5 text-foreground" /> : <Plus className="h-3.5 w-3.5 text-muted-foreground" />}
+                    <span className="font-serif text-lg text-[#1A1814] leading-snug">{faq.question}</span>
+                    <span className="mt-1 shrink-0 text-[#8B7355]">
+                      {openIndex === i ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
                     </span>
                   </button>
                   <AnimatePresence>
-                    {isOpen && (
+                    {openIndex === i && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
                       >
-                        <div className="border-t border-border px-6 py-5">
-                          <p className="text-sm leading-relaxed text-muted-foreground">{faq.answer}</p>
-                          <span className="mt-3 inline-block rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">
-                            {faq.category}
-                          </span>
-                        </div>
+                        <p className="pb-8 text-sm text-[#1A1814]/60 leading-relaxed max-w-2xl">
+                          {faq.answer}
+                        </p>
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </motion.div>
-              )
-            })}
-          </AnimatePresence>
+                </div>
+              ))}
+              <div className="border-t border-[#1A1814]/10" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
