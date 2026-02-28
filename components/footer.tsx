@@ -9,41 +9,42 @@ export function Footer() {
   }
 
   return (
-    <footer className="border-t border-border bg-card">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 py-16 lg:flex-row lg:justify-between lg:px-8">
-        <div className="flex flex-col items-center gap-2 lg:items-start">
-          <span className="font-serif text-lg text-foreground">Quiet Dissent</span>
-          <p className="text-sm text-muted-foreground">
+    <footer className="border-t border-[#1A1814]/15 bg-[#EDE8DC]">
+      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-20 lg:flex-row lg:items-start lg:justify-between lg:px-8">
+        <div className="flex flex-col gap-3">
+          <span className="font-serif text-xl text-[#1A1814]">Quiet Dissent</span>
+          <p className="text-sm text-[#1A1814]/50 max-w-xs leading-relaxed">
             Operational continuity through authored insight.
           </p>
         </div>
 
-        <nav className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+        <nav className="flex flex-wrap gap-x-10 gap-y-4">
           {["Approach", "Work", "Diagnosis", "FAQ", "Contact"].map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className="group relative transition-colors hover:text-foreground"
+              className="text-[10px] tracking-[0.2em] uppercase text-[#1A1814]/50 transition-colors hover:text-[#1A1814]"
             >
               {link}
-              <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
 
         <motion.button
           onClick={scrollToTop}
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ y: -2 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+          className="flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[#1A1814]/50 transition-colors hover:text-[#1A1814]"
           aria-label="Scroll to top"
         >
-          <ArrowUp className="h-4 w-4" />
-          Back to top
+          <ArrowUp className="h-3 w-3" />
+          Top
         </motion.button>
       </div>
-      <div className="border-t border-border px-6 py-6 text-center text-xs text-muted-foreground">
-        {"Quiet Dissent. All rights reserved."}
+      <div className="border-t border-[#1A1814]/10 px-6 py-5 text-center">
+        <span className="text-[10px] tracking-[0.15em] uppercase text-[#1A1814]/35">
+          Quiet Dissent. All rights reserved.
+        </span>
       </div>
     </footer>
   )
