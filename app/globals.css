@@ -4,43 +4,54 @@
 
 @layer base {
   :root {
-    --background: 36 33% 94%;
-    --foreground: 25 12% 10%;
-    --card: 36 25% 97%;
-    --card-foreground: 25 12% 10%;
-    --popover: 36 33% 94%;
-    --popover-foreground: 25 12% 10%;
-    --primary: 30 25% 45%;
-    --primary-foreground: 36 33% 94%;
-    --secondary: 36 15% 88%;
-    --secondary-foreground: 25 12% 10%;
-    --muted: 36 15% 88%;
-    --muted-foreground: 25 8% 42%;
-    --accent: 25 20% 14%;
-    --accent-foreground: 36 33% 94%;
+    --background: 30 15% 95%;
+    --foreground: 0 0% 10%;
+    --card: 30 12% 97%;
+    --card-foreground: 0 0% 10%;
+    --popover: 30 15% 95%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 28 42% 64%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 8% 90%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 30 8% 90%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 18%;
+    --accent-foreground: 30 15% 95%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 33 14% 80%;
-    --input: 33 14% 80%;
-    --ring: 30 25% 45%;
-    --radius: 0rem;
-    --parchment: 36 33% 94%;
-    --parchment-deep: 36 20% 88%;
-    --ink: 25 12% 10%;
-    --taupe: 30 25% 45%;
-    --espresso: 25 20% 14%;
+    --border: 28 10% 83%;
+    --input: 28 10% 83%;
+    --ring: 28 42% 64%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.625rem;
+    --warm-gold: 28 42% 64%;
+    --warm-cream: 30 25% 96%;
+    --charcoal: 0 0% 18%;
   }
 }
 
 @layer base {
-  * { @apply border-border; }
-  body { @apply bg-background text-foreground; }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -49,12 +60,46 @@ html { scroll-behavior: smooth; }
 }
 
 ::selection {
-  background-color: hsl(30 25% 45% / 0.2);
-  color: hsl(25 12% 10%);
+  background-color: hsl(28 42% 64% / 0.3);
+  color: hsl(0 0% 10%);
+}
+/* ADD THIS AT THE BOTTOM OF YOUR EXISTING globals.css */
+html.lenis {
+  height: auto;
 }
 
-html.lenis { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto; }
-.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-.lenis.lenis-stopped { overflow: hidden; }
-.lenis.lenis-scrolling iframe { pointer-events: none; }
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+/* Smooth scrolling styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}

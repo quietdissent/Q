@@ -29,7 +29,9 @@ export function Navigation() {
     } else {
       document.body.style.overflow = ""
     }
-    return () => { document.body.style.overflow = "" }
+    return () => {
+      document.body.style.overflow = ""
+    }
   }, [mobileOpen])
 
   return (
@@ -39,43 +41,48 @@ export function Navigation() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-[#F5F0E8]/90 backdrop-blur-sm border-b border-[#1A1814]/10" : "bg-transparent"
+          scrolled
+            ? "bg-background/80 backdrop-blur-xl shadow-sm"
+            : "bg-transparent"
         }`}
       >
-        <div className="absolute bottom-0 left-0 h-[1px] bg-[#8B7355]" style={{ width: `${progress * 100}%` }} />
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 lg:px-8">
-          <a href="#" className="font-serif text-lg tracking-tight text-[#1A1814] transition-opacity hover:opacity-60">
+        <div className="absolute bottom-0 left-0 h-[2px] bg-primary/40" style={{ width: `${progress * 100}%` }} />
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+          <a href="#" className="font-serif text-xl tracking-tight text-foreground transition-opacity hover:opacity-70">
             Quiet Dissent
           </a>
-          <div className="hidden items-center gap-10 md:flex">
+
+          <div className="hidden items-center gap-8 md:flex">
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.href}
                 href={link.href}
-                initial={{ opacity: 0, y: -8 }}
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
-                className="text-[10px] tracking-[0.2em] uppercase text-[#1A1814]/60 transition-colors hover:text-[#1A1814]"
+                transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
+                className="group relative text-sm tracking-wide text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
               </motion.a>
             ))}
             <motion.a
               href="#contact"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.7, duration: 0.5 }}
-              className="text-[10px] tracking-[0.2em] uppercase text-[#1A1814] underline underline-offset-4 decoration-[#8B7355] transition-opacity hover:opacity-60"
+              className="rounded-full bg-accent px-5 py-2 text-sm font-medium text-accent-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               Request Diagnosis
             </motion.a>
           </div>
+
           <button
             onClick={() => setMobileOpen(true)}
-            className="relative z-50 text-[#1A1814] md:hidden"
+            className="relative z-50 text-foreground md:hidden"
             aria-label="Open menu"
           >
-            <Menu className="h-5 w-5" />
+            <Menu className="h-6 w-6" />
           </button>
         </nav>
       </motion.header>
@@ -87,16 +94,16 @@ export function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-[#F5F0E8]"
+            className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-background/95 backdrop-blur-xl"
           >
             <button
               onClick={() => setMobileOpen(false)}
-              className="absolute right-6 top-5 text-[#1A1814]"
+              className="absolute right-6 top-5 text-foreground"
               aria-label="Close menu"
             >
-              <X className="h-5 w-5" />
+              <X className="h-6 w-6" />
             </button>
-            <nav className="flex flex-col items-center gap-10">
+            <nav className="flex flex-col items-center gap-8">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
@@ -104,8 +111,8 @@ export function Navigation() {
                   onClick={() => setMobileOpen(false)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08, duration: 0.4 }}
-                  className="font-serif text-4xl text-[#1A1814] transition-opacity hover:opacity-60"
+                  transition={{ delay: i * 0.1, duration: 0.4 }}
+                  className="font-serif text-3xl text-foreground transition-colors hover:text-primary"
                 >
                   {link.label}
                 </motion.a>
@@ -116,7 +123,7 @@ export function Navigation() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.4 }}
-                className="mt-4 text-[10px] tracking-[0.2em] uppercase text-[#1A1814] underline underline-offset-4 decoration-[#8B7355]"
+                className="mt-4 rounded-full bg-accent px-8 py-3 text-lg font-medium text-accent-foreground"
               >
                 Request Diagnosis
               </motion.a>
