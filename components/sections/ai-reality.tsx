@@ -1,74 +1,126 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useInView } from "@/hooks/use-scroll-animation"
+import { Cpu, Brain } from "lucide-react"
 
-const realities = [
-  {
-    number: "01",
-    title: "AI does not fix structural problems",
-    description:
-      "Deploying AI into a structurally misaligned organisation accelerates the misalignment. The technology is neutral — it amplifies whatever architecture it operates within.",
-  },
-  {
-    number: "02",
-    title: "AI-generated language obscures structural conditions",
-    description:
-      "When organisations use AI to produce internal communications, they lose access to the signal that imprecise human language was carrying. The noise was diagnostic.",
-  },
-  {
-    number: "03",
-    title: "The organisations that will thrive are those that can see clearly",
-    description:
-      "Not those with the most advanced tools. The competitive advantage of the next decade is perceptual — the capacity to see what is actually happening and act from that seeing.",
-  },
+const deterministic = [
+  "Trigger-based automations",
+  "Scheduling and routing",
+  "Conditional workflows",
+  "Data transformation",
+]
+
+const probabilistic = [
+  "Content generation",
+  "Classification and summarization",
+  "Conversational interfaces",
+  "Pattern recognition",
 ]
 
 export function AIRealitySection() {
+  const [ref, inView] = useInView(0.1)
+  const [quoteRef, quoteInView] = useInView(0.2)
+
   return (
-    <section id="ai-reality" className="bg-[#F5F0E8] border-t border-[#1A1814]/10">
-      <div className="mx-auto max-w-6xl px-6 py-32 lg:px-8 lg:py-40">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 mb-16">
-          <div className="lg:col-span-3">
-            <span className="text-[10px] tracking-[0.25em] uppercase text-[#1A1814]/40">
-              On AI
-            </span>
-          </div>
-          <div className="lg:col-span-9">
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="font-serif text-4xl text-[#1A1814] leading-[1.1] lg:text-5xl"
-            >
-              Three things that are true about AI and organisations.
-            </motion.h2>
-          </div>
+    <section id="ai" className="relative overflow-hidden bg-card py-24 lg:py-32" ref={ref}>
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl"
+        >
+          <h2 className="font-serif text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
+            AI Is Teaching Us to Be More Human Again
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-muted-foreground lg:text-lg">
+            {"AI doesn't mean technical. It means operational. And it's no longer optional."}{" "}
+            Understanding the two modes of AI is the first step toward reclaiming operational capacity.
+          </p>
+        </motion.div>
+
+        <div className="mt-16 grid gap-8 lg:grid-cols-2">
+          {/* Deterministic */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="group rounded-2xl border border-border bg-background p-8 transition-all duration-500 hover:border-primary/30 hover:shadow-md"
+          >
+            <div className="mb-6 flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/80">
+                <Cpu className="h-6 w-6 text-accent-foreground" />
+              </div>
+              <h3 className="font-serif text-2xl text-foreground">Deterministic AI</h3>
+            </div>
+            <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
+              Rule-based, predictable, and repeatable. These are the systems that replace
+              manual processes with reliable automation.
+            </p>
+            <div className="flex flex-col gap-3">
+              {deterministic.map((item, i) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: -15 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
+                  className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-foreground transition-colors duration-300 hover:bg-card"
+                >
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  {item}
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Probabilistic */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="group rounded-2xl border border-border bg-background p-8 transition-all duration-500 hover:border-primary/30 hover:shadow-md"
+          >
+            <div className="mb-6 flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                <Brain className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-serif text-2xl text-foreground">Probabilistic AI</h3>
+            </div>
+            <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
+              Adaptive, contextual, and generative. These systems augment human judgment
+              and create capacity where none existed.
+            </p>
+            <div className="flex flex-col gap-3">
+              {probabilistic.map((item, i) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: 15 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.6 + i * 0.08, duration: 0.4 }}
+                  className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-foreground transition-colors duration-300 hover:bg-card"
+                >
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  {item}
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
-        <div className="flex flex-col">
-          {realities.map((r, i) => (
-            <motion.div
-              key={r.number}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="grid grid-cols-1 gap-6 border-t border-[#1A1814]/10 py-10 lg:grid-cols-12"
-            >
-              <div className="lg:col-span-3">
-                <span className="text-[10px] tracking-[0.25em] uppercase text-[#8B7355]">{r.number}</span>
-              </div>
-              <div className="lg:col-span-4">
-                <h3 className="font-serif text-xl text-[#1A1814]">{r.title}</h3>
-              </div>
-              <div className="lg:col-span-5">
-                <p className="text-sm text-[#1A1814]/60 leading-relaxed">{r.description}</p>
-              </div>
-            </motion.div>
-          ))}
-          <div className="border-t border-[#1A1814]/10" />
-        </div>
+        {/* Pull Quote */}
+        <motion.blockquote
+          ref={quoteRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={quoteInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="relative mx-auto mt-20 max-w-2xl text-center"
+        >
+          <div className="absolute -left-4 -top-4 font-serif text-6xl text-primary/20">{'"'}</div>
+          <p className="font-serif text-2xl italic leading-relaxed text-foreground lg:text-3xl">
+            {"AI doesn't mean technical. It means operational. And it's no longer optional."}
+          </p>
+        </motion.blockquote>
       </div>
     </section>
   )
