@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { DM_Serif_Display, Inter } from "next/font/google"
 import "./globals.css"
+import { LenisProvider } from "@/components/lenis-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,7 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${dmSerif.variable}`}>
-      <body className="font-sans antialiased bg-[#F5F0E8] text-[#1A1814]">{children}</body>
+      <body className="font-sans antialiased bg-[#F5F0E8] text-[#1A1814]">
+        <LenisProvider>{children}</LenisProvider>
+      </body>
     </html>
   )
 }
