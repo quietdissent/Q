@@ -308,7 +308,7 @@ export function HeroSection() {
         <h1 className="font-serif text-4xl leading-tight tracking-tight text-background sm:text-5xl md:text-6xl lg:text-7xl">
           <AnimatedHeadline text="Non-consensus decisions" />
           <br className="hidden sm:block" />
-          <AnimatedHeadline text="for high impact outcomes" startDelay={3} />
+          <AnimatedHeadline text="for Measurable outcomes." startDelay={3} />
         </h1>
 
         {/* Animated center divider */}
@@ -344,8 +344,7 @@ export function HeroSection() {
           transition={{ delay: 2.0, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-background/50 lg:text-lg"
         >
-          We perceive invisible structural misalignment, give it language,
-          and return agency to people whose time and autonomy have been quietly extracted.
+          We translate that dissonance into a precise diagnosis — identify exactly where your operation is losing time, money, and momentum, build the systems that close those gaps, and stay accountable for the results.
         </motion.p>
 
         {/* CTA */}
@@ -355,6 +354,14 @@ export function HeroSection() {
           transition={{ delay: 2.4, duration: 0.6 }}
           className="mt-12"
         >
+<<<<<<< HEAD
+          <p className="text-xs text-[#1A1814]/40 max-w-sm leading-relaxed">
+            We work with small and mid-size business owners who know AI matters — and need a trusted partner to assess their operation, build the right systems, and stay accountable for results.
+          </p>
+          <span className="text-[10px] tracking-[0.2em] uppercase text-[#1A1814]/30 hidden md:block">
+            Scroll
+          </span>
+=======
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
@@ -369,6 +376,7 @@ export function HeroSection() {
             </span>
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
           </motion.a>
+>>>>>>> 63202143e706292fa5c79d6de3f7cfd77fd8d570
         </motion.div>
       </motion.div>
 
