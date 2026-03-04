@@ -63,27 +63,7 @@ html {
   background-color: hsl(28 42% 64% / 0.3);
   color: hsl(0 0% 10%);
 }
-/* ADD THIS AT THE BOTTOM OF YOUR EXISTING globals.css */
-html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-/* Smooth scrolling styles */
+/* Smooth scrolling */
 html.lenis {
   height: auto;
 }
