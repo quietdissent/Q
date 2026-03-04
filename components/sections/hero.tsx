@@ -51,7 +51,6 @@ function AuroraBorealis() {
 
     ctx.clearRect(0, 0, w, h)
 
-    // Dark base gradient
     const baseGrad = ctx.createLinearGradient(0, 0, 0, h)
     baseGrad.addColorStop(0, "rgba(10, 12, 18, 0.3)")
     baseGrad.addColorStop(0.5, "rgba(8, 10, 15, 0.1)")
@@ -59,7 +58,6 @@ function AuroraBorealis() {
     ctx.fillStyle = baseGrad
     ctx.fillRect(0, 0, w, h)
 
-    // Aurora bands - each band is a flowing wave of color
     const bands = [
       {
         color1: "rgba(40, 180, 140, 0.12)",
@@ -114,32 +112,27 @@ function AuroraBorealis() {
     ]
 
     for (const band of bands) {
-      // Mouse offset
       const mouseOffsetX = (mx - 0.5) * w * band.mouseInfluence
       const mouseOffsetY = (my - 0.5) * h * band.mouseInfluence * 0.3
 
       ctx.save()
       ctx.globalCompositeOperation = "screen"
 
-      // Draw vertical curtain-like strips
       const stripCount = 80
       const stripW = w / stripCount + 2
 
       for (let i = 0; i <= stripCount; i++) {
         const x = (i / stripCount) * w
 
-        // Layered sine waves for the flowing curtain shape
         const wave1 = Math.sin((x + mouseOffsetX) * band.frequency + t * band.speed) * band.amplitude
         const wave2 = Math.sin((x + mouseOffsetX) * band.frequency * 1.7 + t * band.speed * 1.3 + 2.0) * band.amplitude * 0.5
         const wave3 = Math.sin((x + mouseOffsetX) * band.frequency * 0.5 + t * band.speed * 0.7 - 1.5) * band.amplitude * 0.3
 
         const yCenter = band.yBase + wave1 + wave2 + wave3 + mouseOffsetY
 
-        // Intensity varies along the band
         const intensity = (Math.sin(x * 0.005 + t * 0.5) * 0.5 + 0.5) *
                           (Math.sin(x * 0.003 - t * 0.3) * 0.3 + 0.7)
 
-        // Vertical gradient strip (aurora curtain effect)
         const grad = ctx.createLinearGradient(x, yCenter - band.width, x, yCenter + band.width)
         grad.addColorStop(0, "transparent")
         grad.addColorStop(0.2, band.color2)
@@ -157,7 +150,6 @@ function AuroraBorealis() {
       ctx.restore()
     }
 
-    // Shimmer layer - small bright patches that pulse
     ctx.save()
     ctx.globalCompositeOperation = "screen"
     const shimmerCount = 12
@@ -175,7 +167,6 @@ function AuroraBorealis() {
     }
     ctx.restore()
 
-    // Stars scattered in the upper portion
     ctx.save()
     for (let i = 0; i < 40; i++) {
       const seed = i * 7919
@@ -221,7 +212,6 @@ function AuroraBorealis() {
     }
   }, [draw])
 
-  // Mouse tracking
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
       mouseRef.current = {
@@ -274,7 +264,7 @@ export function HeroSection() {
         <AuroraBorealis />
       </div>
 
-      {/* Subtle bottom vignette to blend into next section */}
+      {/* Bottom vignette */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-64"
         style={{
@@ -283,7 +273,7 @@ export function HeroSection() {
         aria-hidden="true"
       />
 
-      {/* Hero content with scroll parallax */}
+      {/* Hero content */}
       <motion.div
         style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
         className="relative z-10 mx-auto max-w-4xl text-center"
@@ -308,10 +298,10 @@ export function HeroSection() {
         <h1 className="font-serif text-4xl leading-tight tracking-tight text-background sm:text-5xl md:text-6xl lg:text-7xl">
           <AnimatedHeadline text="Non-consensus decisions" />
           <br className="hidden sm:block" />
-          <AnimatedHeadline text="for Measurable outcomes." startDelay={3} />
+          <AnimatedHeadline text="Measurable outcomes." startDelay={3} />
         </h1>
 
-        {/* Animated center divider */}
+        {/* Divider */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -354,14 +344,6 @@ export function HeroSection() {
           transition={{ delay: 2.4, duration: 0.6 }}
           className="mt-12"
         >
-<<<<<<< HEAD
-          <p className="text-xs text-[#1A1814]/40 max-w-sm leading-relaxed">
-            We work with small and mid-size business owners who know AI matters — and need a trusted partner to assess their operation, build the right systems, and stay accountable for results.
-          </p>
-          <span className="text-[10px] tracking-[0.2em] uppercase text-[#1A1814]/30 hidden md:block">
-            Scroll
-          </span>
-=======
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
@@ -376,7 +358,6 @@ export function HeroSection() {
             </span>
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
           </motion.a>
->>>>>>> 63202143e706292fa5c79d6de3f7cfd77fd8d570
         </motion.div>
       </motion.div>
 
