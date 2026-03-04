@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#F5F0E8",
+  themeColor: "#f5f3f0",
 }
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${dmSerif.variable}`}>
-      <body className="font-sans antialiased bg-[#F5F0E8] text-[#1A1814]">{children}</body>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   )
 }
